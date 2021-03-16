@@ -51,6 +51,7 @@ namespace RUdrac.BrockenSteel
         Green,
         Blue,
         Yellow,
-        Violet
+        Violet,
+        core
     }
 }

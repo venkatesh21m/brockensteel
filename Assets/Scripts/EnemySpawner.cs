@@ -58,6 +58,8 @@ namespace RUdrac.BrockenSteel
             yield return new WaitForSeconds(0.75f*27);
 
             StartCoroutine(StraitSpawningStreak(25,0.75f));
+            yield return new WaitForSeconds(0.75f * 27);
+            StartCoroutine("SpawnPattern");
 
         }
 

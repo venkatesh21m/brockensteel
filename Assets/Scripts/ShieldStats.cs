@@ -52,6 +52,13 @@ namespace RUdrac.BrockenSteel
 
         void DeathEffect()
         {
+            if(colorType == ColorType.core)
+            {
+                GameManager.instance.GameOver();
+                StopAllCoroutines();
+                return;
+            }
+
             mySequence.Complete();
             transform.localScale = Vector3.one;
             transform.DOPunchScale(Vector3.one * 1.2f, .25f);

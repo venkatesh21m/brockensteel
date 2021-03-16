@@ -7,6 +7,7 @@ namespace RUdrac.BrockenSteel
     public class PowerUps : MonoBehaviour
     {
         public GameObject positiveImpulse;
+        public GameObject Holograph;
 
         public void positivePowerUp()
         {
@@ -20,6 +21,20 @@ namespace RUdrac.BrockenSteel
         {
 
         }
+
+        public void ActivateHologram()
+        {
+            Holograph.SetActive(true);
+            Invoke("DisableHolograph", 10);
+        }
+
+
+
+        void DisableHolograph()
+        {
+            Holograph.SetActive(false);
+        }
+
     }
 
 }
