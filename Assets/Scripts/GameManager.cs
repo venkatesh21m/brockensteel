@@ -13,9 +13,35 @@ namespace RUdrac.BrockenSteel
         public GameObject GameOverPanel;
         public TMPro.TMP_Text scoreText;
 
+
+
+        [HideInInspector] public Events.onBooleanEvent onSlowMotionEvent = new Events.onBooleanEvent();
+        [HideInInspector] public Events.onBooleanEvent onShieldRecoveryEvent = new Events.onBooleanEvent();
+        [HideInInspector] public Events.onBooleanEvent onEnergyBoostEvent = new Events.onBooleanEvent();
+
+
+        public bool SlowMotion
+        {
+            get;
+            set;
+        }
+
         int score = 0;
+
+        private void OnEnable()
+        {
+            onSlowMotionEvent.AddListener(HandleSlowMotionEvent);
+        }
+
+        #region EventHandles
+        void HandleSlowMotionEvent(bool active)
+        {
+            SlowMotion = active;
+        }
+        #endregion
+
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             instance = this;
         }
@@ -52,6 +78,7 @@ namespace RUdrac.BrockenSteel
         Blue,
         Yellow,
         Violet,
-        core
+        core,
+        FireWall
     }
 }

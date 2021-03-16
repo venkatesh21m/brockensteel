@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 namespace RUdrac.BrockenSteel
 {
@@ -20,6 +21,17 @@ namespace RUdrac.BrockenSteel
                 Health = 100;
 
             renderer = GetComponent<MeshRenderer>();
+
+            if(colorType == ColorType.core)
+            {
+                GameManager.instance.onEnergyBoostEvent.AddListener(HandleEnergyBoostListener);
+            }
+
+        }
+
+        private void HandleEnergyBoostListener(bool arg0)
+        {
+            Health = 50;
         }
 
         public void TakeDamage(float amount)

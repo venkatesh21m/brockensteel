@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 
 namespace RUdrac.BrockenSteel
@@ -24,6 +25,12 @@ namespace RUdrac.BrockenSteel
         {
             GameObject other = collision.gameObject;
             EnemyStats Enemystats = other.GetComponent<EnemyStats>();
+            
+            if (stats.colorType == ColorType.FireWall)
+            {
+                Enemystats.DeathEffect();
+                return;
+            }
            
                 bool samecolor = false;
                 foreach (var item in Enemystats.colorTypes)
@@ -39,10 +46,10 @@ namespace RUdrac.BrockenSteel
 
             if(samecolor == false)
             {
+                Camera.main.transform.DOShakeRotation(0.25f, 0.75f,20);
                 stats.TakeDamage(Enemystats.DamageAmount);
                 Enemystats.DeathEffect();
             }
-
 
         }
     }

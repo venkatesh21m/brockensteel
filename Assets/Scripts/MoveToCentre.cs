@@ -16,9 +16,18 @@ namespace RUdrac.BrockenSteel
             LineRenderer = gameObject.AddComponent<LineRenderer>();
             LineRenderer.SetWidth(0.051f, 0.051f);
             LineRenderer.material = GetComponent<MeshRenderer>() ? GetComponent<MeshRenderer>().material : transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
-
+           
+            if (GameManager.instance.SlowMotion) translationSpeed /= 3;
+            GameManager.instance.onSlowMotionEvent.AddListener(HandleSlowmotionevent);
 
         }
+
+        void HandleSlowmotionevent(bool active)
+        {
+            if (active) translationSpeed /= 3;
+            else translationSpeed *= 3;
+        }
+
         // Update is called once per frame
         void Update()
         {

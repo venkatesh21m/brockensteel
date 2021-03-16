@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,13 +12,30 @@ namespace RUdrac.BrockenSteel
         // Start is called before the first frame update
         void Start()
         {
+            GameManager.instance.onShieldRecoveryEvent.AddListener(HandleshieldRecoveryEvent);
+        }
 
+        private void HandleshieldRecoveryEvent(bool active)
+        {
+            var shields = GetComponentsInChildren<ShieldStats>(true);
+            Debug.Log(shields.Length);
+            foreach (var item in shields)
+            {
+                if (item.colorType != ColorType.FireWall)
+                {
+                    item.Health = 50;
+                    if (!item.gameObject.activeSelf)
+                    {
+                        item.transform.localScale = Vector3.one;
+                        item.gameObject.SetActive(true);
+                    }
+                }
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-
             float lh = Input.GetAxis("Horizontal");
             if(Input.touchCount > 0)
             {
@@ -37,7 +55,5 @@ namespace RUdrac.BrockenSteel
             }
             transform.Rotate(new Vector3(0, lh * RotationSpeed * Time.deltaTime, 0));
         }
-
-
     }
 }

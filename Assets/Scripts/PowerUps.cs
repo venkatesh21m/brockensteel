@@ -8,6 +8,10 @@ namespace RUdrac.BrockenSteel
     {
         public GameObject positiveImpulse;
         public GameObject Holograph;
+        public GameObject EnergyBoosteffect;
+        public GameObject ShieldRecoveryeffect;
+        public GameObject FireWall;
+
 
         public void positivePowerUp()
         {
@@ -19,7 +23,8 @@ namespace RUdrac.BrockenSteel
 
         public void ActivateSlowMotion()
         {
-
+            GameManager.instance.onSlowMotionEvent.Invoke(true);
+            Invoke("DisableSlowMotion", 10);
         }
 
         public void ActivateHologram()
@@ -28,13 +33,46 @@ namespace RUdrac.BrockenSteel
             Invoke("DisableHolograph", 10);
         }
 
+        public void ActivateEnergyBoost()
+        {
+            positivePowerUp();
+            Destroy(Instantiate(EnergyBoosteffect), 10);
+        }
 
+
+        public void ActivateSHieldRecovery()
+        {
+            GameManager.instance.onShieldRecoveryEvent.Invoke(true);
+            Destroy(Instantiate(ShieldRecoveryeffect), 10);
+        }
+
+        public void ActivateFireWall()
+        {
+            FireWall.SetActive(true);
+            Invoke("Disablefirewall", 10);
+        }
+
+
+
+
+
+
+
+
+
+
+        void DisableSlowMotion()
+        {
+            GameManager.instance.onSlowMotionEvent.Invoke(false);
+        }
 
         void DisableHolograph()
         {
             Holograph.SetActive(false);
+        } 
+        void Disablefirewall()
+        {
+            FireWall.SetActive(false);
         }
-
     }
-
 }
