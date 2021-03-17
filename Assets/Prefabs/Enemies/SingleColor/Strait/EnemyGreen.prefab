@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 5622837849867386504}
   - component: {fileID: 5622837849867386519}
   - component: {fileID: 5622837849867386518}
-  - component: {fileID: 5622837849867386506}
   - component: {fileID: 5622837849867386507}
-  - component: {fileID: 7085616233028972261}
   - component: {fileID: 8033144972363919703}
+  - component: {fileID: 1295496389}
   m_Layer: 9
   m_Name: Enemy Green Model
   m_TagString: Green
@@ -2257,20 +2256,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5622837849867386506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5622837849867386516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba646db67529b8459586b4796468c51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationSpeed: 10
-  LineRenderer: {fileID: 0}
 --- !u!54 &5622837849867386507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2287,23 +2272,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &7085616233028972261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5622837849867386516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92181abbcbe4e4b4ab833dbf49c6030f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageAmount: 10
-  Health: 10
-  colorTypes: 01000000
-  DeathParticleEffects:
-  - {fileID: 2645295512932196531, guid: 42aa52d6533c83049ba43f3452d51336, type: 3}
 --- !u!96 &8033144972363919703
 TrailRenderer:
   serializedVersion: 2
@@ -2411,6 +2379,23 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1295496389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622837849867386516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2553762b6f0ce43469d8a99393f5a456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmount: 10
+  Health: 10
+  colorTypes: 01000000
+  DeathParticleEffects:
+  - {fileID: 2645295512932196531, guid: 42aa52d6533c83049ba43f3452d51336, type: 3}
 --- !u!1 &5622837850881045554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,6 +2405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5622837850881045555}
+  - component: {fileID: 1295496387}
   m_Layer: 0
   m_Name: EnemyGreen
   m_TagString: Untagged
@@ -2442,3 +2428,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
+--- !u!114 &1295496387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622837850881045554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec104ae549febd4cabd4730e985b0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementType: 0
+  MovementSpeed: 5
+  rotationSpeed: 0
+  directionchangeTime: 0

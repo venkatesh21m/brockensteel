@@ -22,8 +22,8 @@ namespace Rudrac.BrockenSteel
 
             LineRenderer = gameObject.AddComponent<LineRenderer>();
             LineRenderer.SetWidth(0.051f, 0.051f);
-            LineRenderer.material = GetComponent<MeshRenderer>() ? GetComponent<MeshRenderer>().material : transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
-            if(movementType == MovementType.zigzag) InvokeRepeating("changeDirection", 0.2f, directionchangeTime);
+            LineRenderer.material = transform.GetChild(0).GetComponent<MeshRenderer>() ? transform.GetChild(0).GetComponent<MeshRenderer>().material : transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
+            if(movementType == MovementType.zigzag) InvokeRepeating("changeDirection", 0f, directionchangeTime);
         }
 
         void changeDirection()
@@ -31,9 +31,11 @@ namespace Rudrac.BrockenSteel
             rotationSpeed = -rotationSpeed;
         }
 
+
+
         private void Update()
         {
-            model.Translate(-model.right * MovementSpeed * Time.deltaTime);
+            model.Translate(new Vector3(-MovementSpeed * Time.deltaTime, 0, 0) );
 
             switch (movementType)
             {
@@ -43,6 +45,7 @@ namespace Rudrac.BrockenSteel
                     transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
                     break;
                 case MovementType.zigzag:
+                    transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
                     break;
                 default:
                     break;

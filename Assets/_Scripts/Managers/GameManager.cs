@@ -28,7 +28,7 @@ namespace Rudrac.BrockenSteel
         public GameState CurrentGameState { get { return currentGameState; } set { currentGameState = value; } }
 
         [SerializeField] GameMode curentGameMode;
-        public GameMode CurentGameMode { get { return curentGameMode; } set { curentGameMode = value } }
+        public GameMode CurentGameMode { get { return curentGameMode; } set { curentGameMode = value; } }
         #endregion
 
         #region events initialisation

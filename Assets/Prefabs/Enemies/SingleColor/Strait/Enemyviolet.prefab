@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 1558007944665348266}
   - component: {fileID: 1558007944665348277}
   - component: {fileID: 1558007944665348276}
-  - component: {fileID: 1558007944665348264}
   - component: {fileID: 1558007944665348265}
-  - component: {fileID: 4792774501223976404}
   - component: {fileID: 1499500459935618339}
+  - component: {fileID: 813282129}
   m_Layer: 9
   m_Name: Enemy Violet Model
   m_TagString: Violet
@@ -2257,20 +2256,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1558007944665348264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558007944665348278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba646db67529b8459586b4796468c51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationSpeed: 10
-  LineRenderer: {fileID: 0}
 --- !u!54 &1558007944665348265
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2287,23 +2272,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &4792774501223976404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558007944665348278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92181abbcbe4e4b4ab833dbf49c6030f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageAmount: 10
-  Health: 10
-  colorTypes: 04000000
-  DeathParticleEffects:
-  - {fileID: 2645295512932196531, guid: 67dd15a450e95bf469656ad4815339b9, type: 3}
 --- !u!96 &1499500459935618339
 TrailRenderer:
   serializedVersion: 2
@@ -2411,6 +2379,23 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &813282129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558007944665348278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2553762b6f0ce43469d8a99393f5a456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmount: 10
+  Health: 10
+  colorTypes: 04000000
+  DeathParticleEffects:
+  - {fileID: 2645295512932196531, guid: 67dd15a450e95bf469656ad4815339b9, type: 3}
 --- !u!1 &1558007945145693961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,6 +2405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558007945145693966}
+  - component: {fileID: 813282127}
   m_Layer: 0
   m_Name: Enemyviolet
   m_TagString: Untagged
@@ -2442,3 +2428,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &813282127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558007945145693961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec104ae549febd4cabd4730e985b0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementType: 0
+  MovementSpeed: 5
+  rotationSpeed: 0
+  directionchangeTime: 0

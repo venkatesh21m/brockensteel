@@ -5533,7 +5533,7 @@ Mesh:
     vertexCount: 240
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 1, y: 1, z: 1}
   m_Shapes:
     vertices: []
     shapes: []
@@ -9009,7 +9009,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-75496
+  m_Name: pb_Mesh18346
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10169,7 +10169,7 @@ Mesh:
     vertexCount: 240
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 1, y: 1, z: 1}
   m_Shapes:
     vertices: []
     shapes: []
@@ -17945,7 +17945,7 @@ Mesh:
     vertexCount: 240
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 1, y: 1, z: 1}
   m_Shapes:
     vertices: []
     shapes: []
@@ -18929,7 +18929,7 @@ Mesh:
     vertexCount: 240
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 1, y: 1, z: 1}
   m_Shapes:
     vertices: []
     shapes: []
@@ -28223,7 +28223,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-253676
+  m_Name: pb_Mesh18916
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32213,7 +32213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1214749575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33901,6 +33901,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1295496387, guid: c45a94c9d04b60441aba9d595c7ebcb9, type: 3}
+      propertyPath: movementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1295496387, guid: c45a94c9d04b60441aba9d595c7ebcb9, type: 3}
+      propertyPath: rotationSpeed
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 5622837849867386505, guid: c45a94c9d04b60441aba9d595c7ebcb9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -38070,7 +38078,7 @@ Mesh:
     vertexCount: 240
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 1, y: 1, z: 1}
   m_Shapes:
     vertices: []
     shapes: []
@@ -42994,6 +43002,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1680348728, guid: 896f5d39e7e12964b92d130e956bb741, type: 3}
+      propertyPath: movementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680348728, guid: 896f5d39e7e12964b92d130e956bb741, type: 3}
+      propertyPath: rotationSpeed
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 8320736168434562246, guid: 896f5d39e7e12964b92d130e956bb741, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -43719,6 +43735,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1773962569, guid: 3c865dc8e3b24e54cb26f4c2a43b7ac7, type: 3}
+      propertyPath: movementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773962569, guid: 3c865dc8e3b24e54cb26f4c2a43b7ac7, type: 3}
+      propertyPath: rotationSpeed
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773962569, guid: 3c865dc8e3b24e54cb26f4c2a43b7ac7, type: 3}
+      propertyPath: directionchangeTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1558007944665348267, guid: 3c865dc8e3b24e54cb26f4c2a43b7ac7, type: 3}
       propertyPath: m_Mesh
       value: 
