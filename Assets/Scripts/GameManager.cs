@@ -13,8 +13,6 @@ namespace RUdrac.BrockenSteel
         public GameObject GameOverPanel;
         public TMPro.TMP_Text scoreText;
 
-
-
         [HideInInspector] public Events.onBooleanEvent onSlowMotionEvent = new Events.onBooleanEvent();
         [HideInInspector] public Events.onBooleanEvent onShieldRecoveryEvent = new Events.onBooleanEvent();
         [HideInInspector] public Events.onBooleanEvent onEnergyBoostEvent = new Events.onBooleanEvent();
@@ -68,7 +66,6 @@ namespace RUdrac.BrockenSteel
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
     }
 
     public enum ColorType

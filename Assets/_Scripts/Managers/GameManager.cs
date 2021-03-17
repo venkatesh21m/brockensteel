@@ -23,29 +23,35 @@ namespace Rudrac.BrockenSteel
         
         int score = 0;
 
-
-
+        #region properties
         [SerializeField] GameState currentGameState;
-        public GameState CurrentGameState { get; set; }
+        public GameState CurrentGameState { get { return currentGameState; } set { currentGameState = value; } }
 
         [SerializeField] GameMode curentGameMode;
-        public GameState CurentGameMode { get; set; }
+        public GameMode CurentGameMode { get { return curentGameMode; } set { curentGameMode = value } }
+        #endregion
 
+        #region events initialisation
 
         [HideInInspector] public Events.GameStateChangeEvent onGameStateChangeEvent = new Events.GameStateChangeEvent();
         [HideInInspector] public Events.GameModeChangeEvent onGameModeChangeEvent = new Events.GameModeChangeEvent();
 
+        #endregion
 
         public void Start()
         {
             onGameModeChangeEvent.AddListener(HandleGamemodeChanged);
         }
 
+        #region EventHanders
         private void HandleGamemodeChanged(GameMode gameMode)
         {
             curentGameMode = gameMode;
         }
+        #endregion
 
+
+        #region functions
         public void scored()
         {
             score++;
@@ -74,7 +80,7 @@ namespace Rudrac.BrockenSteel
 
             onGameStateChangeEvent.Invoke(CurrentGameState, previousState);
         }
-   
 
+        #endregion
     }
 }
