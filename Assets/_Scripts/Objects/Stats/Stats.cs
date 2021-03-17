@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using System;
 
-namespace RUdrac.BrockenSteel
+namespace Rudrac.BrockenSteel
 {
-    public class ShieldStats : MonoBehaviour
+    public class Stats : MonoBehaviour
     {
-
+        public float MaxHealth;
         public float Health;
         [Space]
         public ColorType colorType;
 
         MeshRenderer renderer;
         Sequence mySequence;
-       
+
         void Start()
         {
-            if(Health == 0)
+            if (Health == 0)
                 Health = 100;
 
             renderer = GetComponent<MeshRenderer>();
 
-            if(colorType == ColorType.core)
+            if (colorType == ColorType.core)
             {
-                GameManager.instance.onEnergyBoostEvent.AddListener(HandleEnergyBoostListener);
+               // GameManager.instance.onEnergyBoostEvent.AddListener(HandleEnergyBoostListener);
             }
 
         }
@@ -43,7 +42,7 @@ namespace RUdrac.BrockenSteel
                 DeathEffect();
             else
                 TakeDamageEffect();
-            
+
         }
 
         public void scoredEffect()
@@ -65,9 +64,9 @@ namespace RUdrac.BrockenSteel
 
         void DeathEffect()
         {
-            if(colorType == ColorType.core)
+            if (colorType == ColorType.core)
             {
-                GameManager.instance.GameOver();
+                GameManager.instance.UpdateGameState(GameState.GameOver);
                 StopAllCoroutines();
                 return;
             }
@@ -83,5 +82,43 @@ namespace RUdrac.BrockenSteel
         {
             gameObject.SetActive(false);
         }
+
+
+
+
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            GameObject other = collision.gameObject;
+            EnemyStats Enemystats = other.GetComponent<EnemyStats>();
+
+            if (colorType == ColorType.FireWall)
+            {
+                Enemystats.DeathEffect();
+                return;
+            }
+
+            bool samecolor = false;
+            foreach (var item in Enemystats.colorTypes)
+            {
+                if (item == colorType)
+                {
+                    GameManager.instance.scored();
+                    scoredEffect();
+                    Enemystats.ConsumeEffect();
+                    samecolor = true;
+                }
+            }
+
+            if (samecolor == false)
+            {
+                Camera.main.transform.DOShakeRotation(0.25f, 0.75f, 20);
+                TakeDamage(Enemystats.DamageAmount);
+                Enemystats.DeathEffect();
+            }
+
+        }
+
+
     }
 }

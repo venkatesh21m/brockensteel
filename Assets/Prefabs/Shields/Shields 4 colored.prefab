@@ -36074,8 +36074,7 @@ GameObject:
   - component: {fileID: 5099445360265857095}
   - component: {fileID: 5099445360265857094}
   - component: {fileID: 5099445360265857088}
-  - component: {fileID: 5099445360265857091}
-  - component: {fileID: 5099445360265857090}
+  - component: {fileID: 615021123154884236}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Green
@@ -36992,7 +36991,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445360265857091
+--- !u!114 &615021123154884236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37001,23 +37000,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445360265857096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 1
---- !u!114 &5099445360265857090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445360265857096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5099445360403543750
 GameObject:
   m_ObjectHideFlags: 0
@@ -37138,8 +37126,7 @@ GameObject:
   - component: {fileID: 5099445360448689500}
   - component: {fileID: 5099445360448689503}
   - component: {fileID: 5099445360448689497}
-  - component: {fileID: 5099445360448689496}
-  - component: {fileID: 5099445360448689499}
+  - component: {fileID: 5114617652295288928}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Blue
@@ -38056,7 +38043,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445360448689496
+--- !u!114 &5114617652295288928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38065,23 +38052,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445360448689473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 2
---- !u!114 &5099445360448689499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445360448689473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5099445360488875929
 GameObject:
   m_ObjectHideFlags: 0
@@ -38288,8 +38264,7 @@ GameObject:
   - component: {fileID: 5099445360974162621}
   - component: {fileID: 5099445360974162620}
   - component: {fileID: 5099445360974162614}
-  - component: {fileID: 5099445360974162617}
-  - component: {fileID: 5099445360974162616}
+  - component: {fileID: 2809843559654712529}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Yellow
@@ -39206,7 +39181,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445360974162617
+--- !u!114 &2809843559654712529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39215,23 +39190,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445360974162622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 3
---- !u!114 &5099445360974162616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445360974162622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5099445360995307800
 GameObject:
   m_ObjectHideFlags: 0
@@ -39339,8 +39303,7 @@ GameObject:
   - component: {fileID: 5099445361198823917}
   - component: {fileID: 5099445361198823916}
   - component: {fileID: 5099445361198823910}
-  - component: {fileID: 5099445361198823913}
-  - component: {fileID: 5099445361198823912}
+  - component: {fileID: 5239047103252278361}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Yellow
@@ -40257,7 +40220,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445361198823913
+--- !u!114 &5239047103252278361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40266,23 +40229,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445361198823918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 3
---- !u!114 &5099445361198823912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445361198823918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5099445361649506549
 GameObject:
   m_ObjectHideFlags: 0
@@ -40297,8 +40249,7 @@ GameObject:
   - component: {fileID: 5099445361649506544}
   - component: {fileID: 5099445361649506547}
   - component: {fileID: 5099445361649506509}
-  - component: {fileID: 5099445361649506508}
-  - component: {fileID: 5099445361649506511}
+  - component: {fileID: 5879332494148300111}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Green
@@ -41215,7 +41166,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445361649506508
+--- !u!114 &5879332494148300111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41224,23 +41175,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445361649506549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 1
---- !u!114 &5099445361649506511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445361649506549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5099445361674142634
 GameObject:
   m_ObjectHideFlags: 0
@@ -41255,8 +41195,7 @@ GameObject:
   - component: {fileID: 5099445361674142633}
   - component: {fileID: 5099445361674142632}
   - component: {fileID: 5099445361674142626}
-  - component: {fileID: 5099445361674142629}
-  - component: {fileID: 5099445361674142628}
+  - component: {fileID: 4513587216259344340}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Red
@@ -42173,7 +42112,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445361674142629
+--- !u!114 &4513587216259344340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42182,23 +42121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445361674142634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 0
---- !u!114 &5099445361674142628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445361674142634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5099445362117911043
 GameObject:
   m_ObjectHideFlags: 0
@@ -42244,8 +42172,7 @@ GameObject:
   - component: {fileID: 5099445362313551010}
   - component: {fileID: 5099445362313551013}
   - component: {fileID: 5099445362313551039}
-  - component: {fileID: 5099445362313551038}
-  - component: {fileID: 5099445362313551009}
+  - component: {fileID: 7235776484454889129}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Red
@@ -43162,7 +43089,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445362313551038
+--- !u!114 &7235776484454889129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43171,23 +43098,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445362313551015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 0
---- !u!114 &5099445362313551009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445362313551015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5099445362376616048
 GameObject:
   m_ObjectHideFlags: 0
@@ -43202,8 +43118,7 @@ GameObject:
   - component: {fileID: 5099445362376616015}
   - component: {fileID: 5099445362376616014}
   - component: {fileID: 5099445362376616008}
-  - component: {fileID: 5099445362376616011}
-  - component: {fileID: 5099445362376616010}
+  - component: {fileID: 8918731586219418868}
   m_Layer: 8
   m_Name: Arch
   m_TagString: Blue
@@ -44120,7 +44035,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!114 &5099445362376616011
+--- !u!114 &8918731586219418868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44129,20 +44044,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5099445362376616048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1df7ad41def46e42b37a69b0991ef68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0328679fdfb47e248b57010db506fab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  MaxHealth: 100
+  Health: 10
   colorType: 2
---- !u!114 &5099445362376616010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5099445362376616048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f653a36d1dddc3941a4a225d3d230d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
