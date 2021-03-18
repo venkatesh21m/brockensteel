@@ -52,6 +52,12 @@ namespace Rudrac.BrockenSteel
             {
                 JourneyIndicator.SetActive(false);
             }
+
+            if(currentState == GameState.pregame && PreviousState == GameState.GameOver)
+            {
+                GameOverPanel.SetActive(false);
+                MainMenu.SetActive(true);
+            }
         }
 
         // Update is called once per frame

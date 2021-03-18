@@ -41,7 +41,7 @@ namespace Rudrac.BrockenSteel
             if (!transform.parent.gameObject.activeSelf)
             {
                 transform.parent.gameObject.SetActive(true);
-                GetComponentInParent<Core>().HandleShieldRecoveryPowerUpUsed();
+                GetComponentInParent<Core>().HandleShieldRecovery();
             }
             
             StartCoroutine(OpenAnimation());

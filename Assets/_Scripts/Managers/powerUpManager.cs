@@ -36,7 +36,7 @@ namespace Rudrac.BrockenSteel
 
         private void HandleShieldRecoveryPowerUpUsed()
         {
-            Destroy(Instantiate(ShieldRecoveryeffect), 10);
+            Destroy(Instantiate(ShieldRecoveryeffect), 3);
         }
 
         private void HandleFirewallPowerUpUsed()
@@ -47,7 +47,7 @@ namespace Rudrac.BrockenSteel
         private void HandleEnergyBoostPowerupUsed()
         {
             HandleImpulsePowerupUsed();
-            Destroy(Instantiate(EnergyBoosteffect), 10);
+            Destroy(Instantiate(EnergyBoosteffect), 5);
         }
 
         private void HandleGameStateCHanged(GameState current, GameState previous)
@@ -55,6 +55,10 @@ namespace Rudrac.BrockenSteel
             if(current == GameState.GameOver)
             {
                 Holograph.SetActive(false);
+                foreach (var item in PowerUps)
+                {
+                    item.SetActive(false);
+                }
             }
         }
 
@@ -86,7 +90,7 @@ namespace Rudrac.BrockenSteel
                 GameManager.instance.OnProvidePowerUpEvent.Invoke();
             }
         }
-
+        
         private void HandleGivePowerupEvent()
         {
             int num = Random.Range(0, PowerUps.Length);

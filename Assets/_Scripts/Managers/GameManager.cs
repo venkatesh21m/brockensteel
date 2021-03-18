@@ -68,11 +68,12 @@ namespace Rudrac.BrockenSteel
 
         private void HandleGameStateChangedEvent(GameState current, GameState previous)
         {
-            if(current == GameState.InfiniteGame && previous == GameState.GameOver)
+            if(current == GameState.InfiniteGame && previous == GameState.GameOver || current == GameState.pregame && previous == GameState.GameOver)
             {
                 Movement[] enemies = FindObjectsOfType<Movement>();
                 //Debug.LogError(enemies.Length);
-
+                score = 0;
+                scoreText.text = score.ToString();
                 foreach (var item in enemies)
                 {
                     Destroy(item.gameObject);
@@ -102,6 +103,8 @@ namespace Rudrac.BrockenSteel
 
         public void UpdateGameState(GameState state)
         {
+            if (state == currentGameState) return;
+
             previousState = currentGameState;
             currentGameState = state;
             switch (state)
@@ -141,5 +144,9 @@ namespace Rudrac.BrockenSteel
             UpdateGameState(previousState);
         }
        
+        public void GoHome()
+        {
+            UpdateGameState(GameState.pregame);
+        }
     }
 }
