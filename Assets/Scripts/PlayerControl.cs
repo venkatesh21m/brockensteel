@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RUdrac.BrockenSteel
+namespace Rudrac.BrockenSteel
 {
     public class PlayerControl : MonoBehaviour
     {
@@ -12,26 +12,26 @@ namespace RUdrac.BrockenSteel
         // Start is called before the first frame update
         void Start()
         {
-            GameManager.instance.onShieldRecoveryEvent.AddListener(HandleshieldRecoveryEvent);
+           // GameManager.instance.onShieldRecoveryEvent.AddListener(HandleshieldRecoveryEvent);
         }
 
-        private void HandleshieldRecoveryEvent(bool active)
-        {
-            var shields = GetComponentsInChildren<ShieldStats>(true);
-            Debug.Log(shields.Length);
-            foreach (var item in shields)
-            {
-                if (item.colorType != ColorType.FireWall)
-                {
-                    item.Health = 50;
-                    if (!item.gameObject.activeSelf)
-                    {
-                        item.transform.localScale = Vector3.one;
-                        item.gameObject.SetActive(true);
-                    }
-                }
-            }
-        }
+        //private void HandleshieldRecoveryEvent(bool active)
+        //{
+        //    var shields = GetComponentsInChildren<ShieldStats>(true);
+        //    Debug.Log(shields.Length);
+        //    foreach (var item in shields)
+        //    {
+        //        if (item.colorType != ColorType.FireWall)
+        //        {
+        //            item.Health = 50;
+        //            if (!item.gameObject.activeSelf)
+        //            {
+        //                item.transform.localScale = Vector3.one;
+        //                item.gameObject.SetActive(true);
+        //            }
+        //        }
+        //    }
+        //}
 
         // Update is called once per frame
         void Update()

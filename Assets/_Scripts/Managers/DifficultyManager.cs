@@ -8,9 +8,9 @@ namespace Rudrac.BrockenSteel
     public class DifficultyManager : MonoBehaviour
     {
         public GameObject[] Shields;
-        public GameObject[] EnemySpaeners;
+       // public GameObject[] EnemySpaeners;
 
-        public int currentIndex
+        public static int currentIndex
         {
             get;
             set;
@@ -21,7 +21,7 @@ namespace Rudrac.BrockenSteel
         {
             currentIndex = 0;
             Shields[currentIndex].SetActive(true);
-            EnemySpaeners[currentIndex].SetActive(true);
+            //EnemySpaeners[currentIndex].SetActive(true);
         }
 
         public void NextDifficulty()
@@ -37,7 +37,7 @@ namespace Rudrac.BrockenSteel
         IEnumerator _NextDifficulty()
         {
             Shields[currentIndex].GetComponent<DifficultySelectionAnimation>().DoCloseAnimation();
-            EnemySpaeners[currentIndex].SetActive(false);
+            //EnemySpaeners[currentIndex].SetActive(false);
             currentIndex++;
             if(currentIndex >= Shields.Length)
             {
@@ -45,7 +45,7 @@ namespace Rudrac.BrockenSteel
             }
             yield return new WaitForSeconds(1);
             Shields[currentIndex].SetActive(true);
-            EnemySpaeners[currentIndex].SetActive(true);
+           // EnemySpaeners[currentIndex].SetActive(true);
 
 
 
@@ -55,7 +55,7 @@ namespace Rudrac.BrockenSteel
          IEnumerator _PreviousDifficulty()
         {
             Shields[currentIndex].GetComponent<DifficultySelectionAnimation>().DoCloseAnimation();
-            EnemySpaeners[currentIndex].SetActive(false);
+            //EnemySpaeners[currentIndex].SetActive(false);
 
             currentIndex--;
             if(currentIndex < 0)
@@ -64,7 +64,7 @@ namespace Rudrac.BrockenSteel
             }
             yield return new WaitForSeconds(1);
             Shields[currentIndex].SetActive(true);
-            EnemySpaeners[currentIndex].SetActive(true);
+           // EnemySpaeners[currentIndex].SetActive(true);
             Shields[currentIndex].GetComponent<DifficultySelectionAnimation>().DoOpenAnimation();
         }
     }

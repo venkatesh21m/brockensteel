@@ -48,6 +48,8 @@ MonoBehaviour:
   MovementSpeed: 5
   rotationSpeed: 0
   directionchangeTime: 0
+  shielded: 0
+  enemyShield: {fileID: 2138110712603161374, guid: 9de0213e60121194dbd45196c848440b, type: 3}
 --- !u!1 &9215860708912662064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,7 +2363,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.3
+  m_Time: 0.7
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1.5
@@ -2444,3 +2446,5 @@ MonoBehaviour:
   colorTypes: 02000000
   DeathParticleEffects:
   - {fileID: 3549313851280827120, guid: 431117645fea1f54784cb013e21ca5fd, type: 3}
+  hasShield: 0
+  shield: {fileID: 0}

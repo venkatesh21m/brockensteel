@@ -39,7 +39,9 @@ namespace Rudrac.BrockenSteel
             Health -= amount;
 
             if (Health <= 0)
+            {
                 DeathEffect();
+            }
             else
                 TakeDamageEffect();
 
@@ -103,7 +105,7 @@ namespace Rudrac.BrockenSteel
             {
                 if (item == colorType)
                 {
-                    GameManager.instance.scored();
+                    GameManager.instance.OnScoredEvent.Invoke();
                     scoredEffect();
                     Enemystats.ConsumeEffect();
                     samecolor = true;
@@ -115,6 +117,7 @@ namespace Rudrac.BrockenSteel
                 Camera.main.transform.DOShakeRotation(0.25f, 0.75f, 20);
                 TakeDamage(Enemystats.DamageAmount);
                 Enemystats.DeathEffect();
+                GameManager.instance.OnmissedEvent.Invoke();
             }
 
         }

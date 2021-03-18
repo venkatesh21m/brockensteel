@@ -35,4 +35,14 @@ namespace Rudrac.BrockenSteel
        zigzag
     }
 
+
+    public enum PowerUps
+    {
+        Impulse,
+        SlowMotion,
+        Holograph,
+        EnergyBooster,
+        ShieldRecovery,
+        FireWall
+    }
 }

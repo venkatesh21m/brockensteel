@@ -12,6 +12,8 @@ namespace Rudrac.BrockenSteel
 
         public GameObject GameOverPanel;
         public GameObject PausPanel;
+        public GameObject GamePanel;
+        public GameObject JourneyIndicator;
         public GameObject DifficultySelection;
         public GameObject MainMenu;
 
@@ -27,16 +29,36 @@ namespace Rudrac.BrockenSteel
 
         private void HandleGameStateChanged(GameState currentState, GameState PreviousState)
         {
-            if(currentState == GameState.GameOver && PreviousState == GameState.JourneyGame)
+            if(currentState == GameState.GameOver && PreviousState == GameState.JourneyGame || currentState == GameState.GameOver && PreviousState == GameState.InfiniteGame)
             {
+                GamePanel.SetActive(false);
+                GameOverPanel.SetActive(true);
+            }
 
+            if(currentState == GameState.InfiniteGame && PreviousState == GameState.GameOver || currentState == GameState.JourneyGame && PreviousState == GameState.GameOver)
+            {
+                GameOverPanel.SetActive(false);
+            }
+
+            if (currentState == GameState.JourneyGame || currentState == GameState.InfiniteGame)
+                GamePanel.SetActive(true);
+            else GamePanel.SetActive(false);
+
+            if(currentState == GameState.JourneyGame || currentState == GameState.GameOver && PreviousState == GameState.JourneyGame)
+            {
+                JourneyIndicator.SetActive(true);
+            }
+            else
+            {
+                JourneyIndicator.SetActive(false);
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-
+           
         }
+
     }
 }

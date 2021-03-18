@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-namespace RUdrac.BrockenSteel
+namespace Rudrac.BrockenSteel
 {
     public class PositiveImpulse : MonoBehaviour
     {

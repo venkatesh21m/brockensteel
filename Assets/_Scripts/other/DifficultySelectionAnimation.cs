@@ -15,15 +15,35 @@ namespace Rudrac.BrockenSteel
 
         private void Start()
         {
+            GameManager.instance.onGameStateChangeEvent.AddListener(HandleGameStateChanged);
             foreach (var item in arcs)
             {
                 item.localScale = Vector3.zero;
             }
-            DoOpenAnimation();
+           // DoOpenAnimation();
+        }
+
+        private void HandleGameStateChanged(GameState current, GameState previous)
+        {
+           if(current == GameState.InfiniteGame|| current == GameState.JourneyGame)
+            {
+                DoOpenAnimation();
+            }
         }
 
         public void DoOpenAnimation()
         {
+            foreach (var item in arcs)
+            {
+                item.localScale = Vector3.zero;
+            }
+           
+            if (!transform.parent.gameObject.activeSelf)
+            {
+                transform.parent.gameObject.SetActive(true);
+                GetComponentInParent<Core>().HandleShieldRecoveryPowerUpUsed();
+            }
+            
             StartCoroutine(OpenAnimation());
         }
 
