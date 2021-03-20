@@ -17,6 +17,10 @@ namespace Rudrac.BrockenSteel
         [SerializeField] GameObject menueffect;
         [Space]
         public GameObject deatheffect;
+
+        [Space]
+        public GameObject AttackMode;
+        public GameObject AttackButton;
         bool isingame;
         public void Start()
         {
@@ -25,8 +29,16 @@ namespace Rudrac.BrockenSteel
 
             GameManager.instance.onGameStateChangeEvent.AddListener(HandleGameStateChangeEvent);
             GameManager.instance.OnShieldRecoveryPowerUpusedEvent.AddListener(HandleShieldRecovery);
+            GameManager.instance.OnEnergyBoostPowerUpusedEvent.AddListener(HandleEnergyBoostPowerupUsed);
 
+           // AttackButton.SetActive(true);
+        }
 
+        private void HandleEnergyBoostPowerupUsed()
+        {
+            Energy = 100;
+            HandleShieldRecovery();
+            AttackButton.SetActive(true);
         }
 
         public void HandleShieldRecovery()
@@ -49,6 +61,16 @@ namespace Rudrac.BrockenSteel
                 {
                     item.transform.localScale = Vector3.one;
                     item.gameObject.SetActive(true);
+
+                    if(curent == GameState.InfiniteGame)
+                    {
+                        item.MaxHealth = 25;
+                    }
+                    else if(curent == GameState.JourneyGame)
+                    {
+                        item.MaxHealth = 15;
+                    }
+
                     item.Health = item.MaxHealth;
                 }
                 isingame = true;
@@ -65,15 +87,24 @@ namespace Rudrac.BrockenSteel
 
             if(curent == GameState.pregame && previous == GameState.GameOver)
             {
+                foreach (var item in stats)
+                {
+                    if(item.gameObject.name != "Spirit")
+                        item.gameObject.SetActive(false);
+                }
+                transform.localScale = Vector3.one;
                 gameObject.SetActive(true);
                 menueffect.SetActive(true);
+                
+                
             }
         }
 
         private void DeathEffect()
         {
             Destroy(Instantiate(deatheffect),3);
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
+            gameObject.transform.localScale = Vector3.zero;
 
         }
 
@@ -92,10 +123,29 @@ namespace Rudrac.BrockenSteel
                     }
                     if (!item.gameObject.activeSelf && item.Health > 0)
                     {
+                        item.transform.localScale = Vector3.one;
                         item.gameObject.SetActive(true);
                     }
                 }
             }
+
+            if(energy<50 && AttackButton.activeSelf)
+            {
+                AttackButton.SetActive(false);
+            }
+        }
+
+        public void OnAttackPressed()
+        {
+            if (AttackMode.activeSelf) return;
+
+            AttackMode.SetActive(true);
+            Invoke("DisableAttackMode", 20);
+        }
+
+        void DisableAttackMode()
+        {
+            AttackMode.SetActive(false);
         }
 
     }

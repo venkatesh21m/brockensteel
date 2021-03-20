@@ -12,6 +12,13 @@ namespace Rudrac.BrockenSteel
         [Space]
         public ColorType colorType;
 
+        [Space]
+        public bool attackMode;
+        public Material LineMaterial;
+        public LayerMask LayerMask;
+        public GameObject enemyDeathEffect;
+
+        LineRenderer LineRenderer;
         MeshRenderer renderer;
         Sequence mySequence;
 
@@ -26,7 +33,55 @@ namespace Rudrac.BrockenSteel
             {
                // GameManager.instance.onEnergyBoostEvent.AddListener(HandleEnergyBoostListener);
             }
+            if (attackMode)
+            {
+                LineRenderer = gameObject.AddComponent<LineRenderer>();
+                LineRenderer.SetWidth(0.25f, 0.25f);
+                LineRenderer.material = LineMaterial;
+            }
 
+        }
+
+        GameObject PREVIOUS;
+        private void Update()
+        {
+            if (!attackMode) return;
+
+            Ray ray = new Ray(transform.GetChild(0).position, transform.GetChild(0).right);
+            RaycastHit hit;
+            if (Physics.SphereCast(ray,1, out hit,5))
+            {
+
+                LineRenderer.SetPosition(0, transform.GetChild(0).position);
+                LineRenderer.SetPosition(1, hit.point);
+                
+                GameObject other = hit.collider.gameObject;
+
+                AudioManager.instance.PlayblastSound();
+                if (other != PREVIOUS)
+                {
+                    PREVIOUS = other;
+                    EnemyStats Enemystats = other.GetComponent<EnemyStats>();
+
+                    foreach (var item in Enemystats.colorTypes)
+                    {
+                        if (item == colorType)
+                        {
+                            GameManager.instance.OnScoredEvent.Invoke();
+                            //scoredEffect();
+                        }
+                    }
+                }
+                GameObject obj = Instantiate(enemyDeathEffect, other.transform.position, Quaternion.identity);
+                obj.GetComponent<ParticleSystem>().GetComponent<Renderer>().material = GetComponent<MeshRenderer>().material;
+                Destroy(obj, 4);
+                Destroy(other.GetComponentInParent<Movement>().gameObject);
+            }
+            else
+            {
+                LineRenderer.SetPosition(0, transform.GetChild(0).position);
+                LineRenderer.SetPosition(1, transform.GetChild(0).right * 10);
+            }
         }
 
         private void HandleEnergyBoostListener(bool arg0)
@@ -41,6 +96,10 @@ namespace Rudrac.BrockenSteel
             if (Health <= 0)
             {
                 DeathEffect();
+                if (Health < -8)
+                {
+                    Health = -8f;
+                }
             }
             else
                 TakeDamageEffect();

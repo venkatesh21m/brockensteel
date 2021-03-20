@@ -28,7 +28,7 @@ namespace Rudrac.BrockenSteel
 
         private void HandleGameStateCHanged(GameState current, GameState previous)
         {
-            if(current == GameState.JourneyGame && previous == GameState.pregame )
+            if(current == GameState.JourneyGame && previous == GameState.pregame /*|| current == GameState.JourneyGame && previous == GameState.GameOver*/)
             {
                 slider.maxValue = MaxScoreValue;
                 slider.value = 0;
@@ -57,6 +57,14 @@ namespace Rudrac.BrockenSteel
             {
                 JourneyStages[index].SetActive(true);
                 index++;
+                if(index == 15)
+                {
+                    GameManager.instance.OnJourneyFinished.Invoke();
+                }
+                else
+                {
+                    GameManager.instance.OnjourneyStageIncrementtrigger.Invoke();
+                }
             }
         }
     }

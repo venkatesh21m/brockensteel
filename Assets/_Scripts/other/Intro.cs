@@ -35,6 +35,7 @@ namespace Rudrac.BrockenSteel.Intro
                 {
                     item.SetActive(false);
                 }
+                gameObject.SetActive(false);
                 return;
             }
             foreach (var item in prewarmbgs)

@@ -20,8 +20,9 @@ namespace Rudrac.BrockenSteel
         #endregion
 
         public TMPro.TMP_Text scoreText;
-        
-        int score = 0;
+
+        public GameObject PausePanel;
+       public static int score = 0;
         GameState previousState;
         #region properties
 
@@ -53,7 +54,9 @@ namespace Rudrac.BrockenSteel
         [HideInInspector] public Events.EnergyBoostertrigger OnEnergyBoostPowerUpusedEvent = new Events.EnergyBoostertrigger();
         [HideInInspector] public Events.ShieldRecoverytrigger OnShieldRecoveryPowerUpusedEvent = new Events.ShieldRecoverytrigger();
         [HideInInspector] public Events.FireWalltrigger OnFirewallPowerUpusedEvent = new Events.FireWalltrigger();
+        [HideInInspector] public Events.JourneyStageIncrementtrigger OnjourneyStageIncrementtrigger = new Events.JourneyStageIncrementtrigger();
 
+        [HideInInspector] public Events.FireWalltrigger OnJourneyFinished = new Events.FireWalltrigger();
 
         #endregion
 
@@ -64,22 +67,45 @@ namespace Rudrac.BrockenSteel
 
             OnSlowMotionPowerUpusedEvent.AddListener(HandleSlowmotionpowerup);
             onGameStateChangeEvent.AddListener(HandleGameStateChangedEvent);
+
+            OnJourneyFinished.AddListener(HandleJourneyFinished);
+
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && (currentGameState == GameState.InfiniteGame || currentGameState == GameState.JourneyGame))
+            {
+                Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+                PausePanel.SetActive(PausePanel.activeSelf ? false : true);
+            }
         }
 
         private void HandleGameStateChangedEvent(GameState current, GameState previous)
         {
-            if(current == GameState.InfiniteGame && previous == GameState.GameOver || current == GameState.pregame && previous == GameState.GameOver)
+            if(current == GameState.InfiniteGame && previous == GameState.GameOver || current == GameState.JourneyGame && previous == GameState.GameOver || current == GameState.pregame && previous == GameState.GameOver)
             {
                 Movement[] enemies = FindObjectsOfType<Movement>();
                 //Debug.LogError(enemies.Length);
-                score = 0;
-                scoreText.text = score.ToString();
+                if (current == GameState.InfiniteGame || current == GameState.pregame)
+                {
+                    score = 0;
+                    scoreText.text = score.ToString();
+                }
                 foreach (var item in enemies)
                 {
                     Destroy(item.gameObject);
                 }
             }
+
+            
         }
+
+        private void HandleJourneyFinished()
+        {
+            UpdateGameState(GameState.GameOver);
+        }
+
 
         #region EventHanders
         private void HandleGamemodeChanged(GameMode gameMode)
@@ -118,6 +144,7 @@ namespace Rudrac.BrockenSteel
                 case GameState.Paused:
                     break;
                 case GameState.GameOver:
+                    AudioManager.instance.PlayGameOVerSound();
                     break;
                 default:
                     break;

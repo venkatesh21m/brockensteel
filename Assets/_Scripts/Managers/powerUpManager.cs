@@ -60,6 +60,9 @@ namespace Rudrac.BrockenSteel
                     item.SetActive(false);
                 }
             }
+
+            if (current == GameState.InfiniteGame) powerupgivencount = 25;
+            else if (current == GameState.JourneyGame) powerupgivencount = 10;
         }
 
         private void HandleHoloGraphPowerupUsed()

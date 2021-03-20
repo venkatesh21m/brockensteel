@@ -97,6 +97,5 @@ namespace Rudrac.BrockenSteel
             Destroy(LineRenderer);
         }
 
-
     }
 }

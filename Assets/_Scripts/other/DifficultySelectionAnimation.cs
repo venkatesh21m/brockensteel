@@ -37,7 +37,7 @@ namespace Rudrac.BrockenSteel
             {
                 item.localScale = Vector3.zero;
             }
-           
+            transform.parent.localScale = Vector3.one;
             if (!transform.parent.gameObject.activeSelf)
             {
                 transform.parent.gameObject.SetActive(true);

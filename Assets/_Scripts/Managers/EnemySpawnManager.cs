@@ -19,20 +19,41 @@ namespace Rudrac.BrockenSteel
         [SerializeField] bool canSpawnDouble;
         [SerializeField] bool canspawnShielded;
 
+        public float journeyTimeGap;
+
         private void Start()
         {
             GameManager.instance.onGameStateChangeEvent.AddListener(HandleGaneStateChageEvent);
+            GameManager.instance.OnjourneyStageIncrementtrigger.AddListener(HandleJourneyStageIncrementTrigger);
+            GameManager.instance.OnJourneyFinished.AddListener(HandleJourneyFinished);
+        }
+
+        private void HandleJourneyFinished()
+        {
+            StopCoroutine(Journey());
+            StopAllCoroutines();
+        }
+
+        private void HandleJourneyStageIncrementTrigger()
+        {
+            journeyIndex++;
+            if (journeyIndex == 5) canSpawnDouble = true;
+            if (journeyIndex == 10) canspawnShielded = true;
         }
 
         private void HandleGaneStateChageEvent(GameState current, GameState previous)
         {
             if(current == GameState.JourneyGame && previous == GameState.pregame || current == GameState.JourneyGame && previous == GameState.GameOver)
             {
-               // StartCoroutine(Endless());
+                //journeyIndex = 0;
+                canSpawnDouble = false;
+                canspawnShielded = false;
+                StartCoroutine(Journey());
             }
             if (current == GameState.GameOver && previous == GameState.JourneyGame)
             {
-                //StopCoroutine(Endless());
+                StopCoroutine(Journey());
+                StopAllCoroutines();
             } 
             
             if(current == GameState.InfiniteGame && previous == GameState.pregame || current == GameState.InfiniteGame && previous == GameState.GameOver)
@@ -47,272 +68,90 @@ namespace Rudrac.BrockenSteel
             }
         }
 
-        //private IEnumerator Journey()
-        //{
-        //    if (Random.value > 0.8f)
-        //    {
-        //        enemy.GetComponent<Movement>().shielded = true;
-        //    }
-
-        //    if (Random.value > 0.5f)
-        //    {
-        //        enemy.GetComponent<Movement>().MovementType = MovementType.rotating;
-        //        enemy.GetComponent<Movement>().rotationSpeed = Random.Range(25, 60);
-        //        if (Random.value > .5f) enemy.GetComponent<Movement>().rotationSpeed = -enemy.GetComponent<Movement>().rotationSpeed;
-        //    }
-
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        int enemytype = Random.Range(0, 2);
-        //        GameObject enemy;
-        //        switch (enemytype)
-        //        {
-        //            case 0:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            case 1:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            case 2:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            default:
-        //                enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                break;
-        //        }
-
-              
-        //        float rotation = Random.Range(0, 360);
-        //        enemy.transform.eulerAngles = new Vector3(0, rotation, 0);
-        //        yield return new WaitForSeconds(1.5f);
-             
-        //    }
-
-        //    yield return new WaitForSeconds(5);
-
-
-        //    for (int i = 0; i < 25; i++)
-        //    {
-        //        int enemytype = Random.Range(0, 2);
-        //        GameObject enemy;
-        //        switch (enemytype)
-        //        {
-        //            case 0:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            case 1:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            case 2:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            default:
-        //                enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                break;
-        //        }
-
-        //        if (Random.value > 0.25f)
-        //        {
-        //            enemy.GetComponent<Movement>().MovementType = MovementType.rotating;
-        //            enemy.GetComponent<Movement>().rotationSpeed = Random.Range(10, 60);
-        //            if (Random.value > .5f) enemy.GetComponent<Movement>().rotationSpeed = -enemy.GetComponent<Movement>().rotationSpeed;
-        //        }
-
-        //        float rotation = Random.Range(0, 360);
-        //        enemy.transform.eulerAngles = new Vector3(0, rotation, 0);
-        //        yield return new WaitForSeconds(1.5f);
-
-        //    }
-
-        //    yield return new WaitForSeconds(5);
-
-        //    for (int i = 0; i < 25; i++)
-        //    {
-        //        int enemytype = Random.Range(0, 2);
-        //        GameObject enemy;
-        //        switch (enemytype)
-        //        {
-        //            case 0:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            case 1:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(twoColouredEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            case 2:
-        //                switch (DifficultyManager.currentIndex)
-        //                {
-        //                    case 0:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 3)]);
-
-        //                        break;
-        //                    case 1:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 4)]);
-
-        //                        break;
-        //                    case 2:
-        //                        enemy = Instantiate(threeColouredEnemies[Random.Range(0, 5)]);
-
-        //                        break;
-        //                    default:
-        //                        enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                        break;
-        //                }
-        //                break;
-        //            default:
-        //                enemy = Instantiate(basicEnemies[Random.Range(0, 3)]);
-        //                break;
-        //        }
-
-        //        if (Random.value > 0.25f)
-        //        {
-        //            enemy.GetComponent<Movement>().MovementType = MovementType.rotating;
-        //            enemy.GetComponent<Movement>().rotationSpeed = Random.Range(10, 60);
-        //            if (Random.value > .5f) enemy.GetComponent<Movement>().rotationSpeed = -enemy.GetComponent<Movement>().rotationSpeed;
-        //        }
-
-        //        float rotation = Random.Range(0, 360);
-        //        enemy.transform.eulerAngles = new Vector3(0, rotation, 0);
-        //        yield return new WaitForSeconds(1.5f);
-
-        //    }
-
-        //}
+        int journeyIndex = 0;
+      
+        IEnumerator Journey()
+        {
+            while (true)
+            {
+                switch (journeyIndex)
+                {
+                    case 0:
+                        SpawnstraitEnemy();
+                        yield return new WaitForSeconds(journeyTimeGap);
+                        break;
+                    case 1:
+                        spawnEnemyColorPattern();
+                        yield return new WaitForSeconds(journeyTimeGap);
+                        break;
+                    case 2:
+                        int totalStreakNumber = Random.Range(5, 20);
+                        StartCoroutine(SpawnEnemyStreak(totalStreakNumber, journeyTimeGap/2)); ;
+                        yield return new WaitForSeconds(journeyTimeGap/2 * totalStreakNumber);
+                        break;
+                    case 3:
+                        int totalStreakNumber_ = Random.Range(5, 20);
+                        StartCoroutine(SpawnEnemyStreakRotation(totalStreakNumber_, journeyTimeGap));
+                        yield return new WaitForSeconds(journeyTimeGap * totalStreakNumber_ + 2);
+                        break;
+                    case 4:
+                        int totalStreakNumber__ = Random.Range(5, 20);
+                        StartCoroutine(SpawnEnemyStreakzigzag(totalStreakNumber__, journeyTimeGap));
+                        yield return new WaitForSeconds(journeyTimeGap * totalStreakNumber__ + 2);
+                        break;
+                    case 5:
+                        SpawnRotatingEnemy();
+                        yield return new WaitForSeconds(journeyTimeGap);
+                        break;
+                    case 6:
+                        SpawnRotatingEnemyColorPattern();
+                        yield return new WaitForSeconds(journeyTimeGap);
+                        break;
+                    case 7:
+                        int _totalStreakNumber = Random.Range(5, 20);
+                        StartCoroutine(SpawnRotatingEnemyStrak(_totalStreakNumber, journeyTimeGap/2));
+                        yield return new WaitForSeconds(journeyTimeGap/2 * _totalStreakNumber);
+                        break;
+                    case 8:
+                        int _totalStreakNumber_ = Random.Range(5, 20);
+                        StartCoroutine(SpawnRotatingEnemyStrakRotation(_totalStreakNumber_, journeyTimeGap));
+                        yield return new WaitForSeconds(journeyTimeGap * _totalStreakNumber_ + 5);
+                        break;
+                    case 9:
+                        int __totalStreakNumber__ = Random.Range(5, 20);
+                        StartCoroutine(SpawnRotatingEnemyStrakZigZag(__totalStreakNumber__, journeyTimeGap));
+                        yield return new WaitForSeconds(journeyTimeGap * __totalStreakNumber__ + 5);
+                        break;
+                    case 10:
+                        SpawnRotatingZigZagEnemy();
+                        yield return new WaitForSeconds(journeyTimeGap);
+                        break;
+                    case 11:
+                        SpawnRotatingzigzagEnemyColorPattern();
+                        yield return new WaitForSeconds(journeyTimeGap);
+                        break;
+                    case 12:
+                        int __total_StreakNumber = Random.Range(5, 20);
+                        StartCoroutine(SpawnRotatingzigzagEnemyStrak(__total_StreakNumber, journeyTimeGap));
+                        yield return new WaitForSeconds(journeyTimeGap * __total_StreakNumber + 5);
+                        break;
+                    case 13:
+                        int _total_StreakNumber_ = Random.Range(5, 20);
+                        StartCoroutine(SpawnRotatingzigzagEnemyStrakRotation(_total_StreakNumber_, journeyTimeGap));
+                        yield return new WaitForSeconds(journeyTimeGap * _total_StreakNumber_ + 5);
+                        break;
+                    case 14:
+                        int __total_StreakNumber__ = Random.Range(5, 20);
+                        StartCoroutine(SpawnRotatingzigzagEnemyStrakRotationzigzag(__total_StreakNumber__, journeyTimeGap));
+                        yield return new WaitForSeconds(journeyTimeGap * __total_StreakNumber__ + 5);
+                        break;
+                    default:
+                        SpawnstraitEnemy();
+                        yield return new WaitForSeconds(journeyTimeGap);
+                        break;
+                }
+            }
+        }
 
         public IEnumerator Endless()
         {
@@ -490,7 +329,7 @@ namespace Rudrac.BrockenSteel
                     //if (Random.value > .5f)
                     //{
                         GameObject enemy = SpawnEnemy(j);
-                        enemy.transform.eulerAngles = new Vector3(0, ((360 / basicEnemies.Length) * j) + additionalAngle, 0);
+                        enemy.transform.eulerAngles = new Vector3(0, ((360 / basicEnemies.Length) * j) + additionalAngle + Random.Range(-20,20), 0);
                     //}
                 }
 
@@ -759,7 +598,7 @@ namespace Rudrac.BrockenSteel
             }
             float additionalAngle = Random.Range(0, 360);
             float DirectionChangeTime = Random.Range(MinDirectionchange, maxDirectionChange);
-            float Rotatingangle = Random.Range(0, 360 / 5);
+            float Rotatingangle = Random.Range(20, 360 / 5);
             for (int i = 0; i < totalStreakNumber; i++)
             {
                 additionalAngle += Rotatingangle;
@@ -788,7 +627,7 @@ namespace Rudrac.BrockenSteel
             }
             float additionalAngle = Random.Range(0, 360);
             float DirectionChangeTime = Random.Range(MinDirectionchange, maxDirectionChange);
-            float Rotatingangle = Random.Range(0, 360 / 5);
+            float Rotatingangle = Random.Range(25, 360 / 5);
             for (int i = 0; i < totalStreakNumber; i++)
             {
                 int direction = 1;

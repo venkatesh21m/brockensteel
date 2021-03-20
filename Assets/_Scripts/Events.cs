@@ -14,7 +14,7 @@ namespace Rudrac.BrockenSteel
         [System.Serializable] public class EnergyBoostertrigger : UnityEvent { };
         [System.Serializable] public class ShieldRecoverytrigger : UnityEvent { };
         [System.Serializable] public class FireWalltrigger : UnityEvent { };
-
+        [System.Serializable] public class JourneyStageIncrementtrigger : UnityEvent { };
 
     }
 }

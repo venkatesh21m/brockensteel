@@ -17,6 +17,14 @@ namespace Rudrac.BrockenSteel
         public GameObject DifficultySelection;
         public GameObject MainMenu;
 
+        [Space]
+        public GameObject journeyovertext;
+        public GameObject BRockenSteeltext;
+        public GameObject RestartButton;
+        [Space]
+        public TMPro.TMP_Text scoreText;
+        public TMPro.TMP_Text HighScoreText;
+
         private void Awake()
         {
             instance = this;
@@ -25,6 +33,15 @@ namespace Rudrac.BrockenSteel
         void Start()
         {
             GameManager.instance.onGameStateChangeEvent.AddListener(HandleGameStateChanged);
+            GameManager.instance.OnJourneyFinished.AddListener(HandleJourneyFinished);
+
+        }
+
+        private void HandleJourneyFinished()
+        {
+            BRockenSteeltext.SetActive(false);
+            journeyovertext.SetActive(true);
+            RestartButton.SetActive(false);
         }
 
         private void HandleGameStateChanged(GameState currentState, GameState PreviousState)
@@ -33,6 +50,22 @@ namespace Rudrac.BrockenSteel
             {
                 GamePanel.SetActive(false);
                 GameOverPanel.SetActive(true);
+
+                if(PreviousState == GameState.InfiniteGame)
+                {
+                    scoreText.text = GameManager.score.ToString();
+                    if(GameManager.score > PersistantManager.HighScore)
+                    {
+                        PersistantManager.HighScore = GameManager.score;
+                    }
+                    HighScoreText.text = "HighScore :" + PersistantManager.HighScore.ToString();
+                }
+                else
+                {
+                    scoreText.text = "";
+                    HighScoreText.text = "";
+                }
+
             }
 
             if(currentState == GameState.InfiniteGame && PreviousState == GameState.GameOver || currentState == GameState.JourneyGame && PreviousState == GameState.GameOver)
@@ -57,7 +90,15 @@ namespace Rudrac.BrockenSteel
             {
                 GameOverPanel.SetActive(false);
                 MainMenu.SetActive(true);
+
+                BRockenSteeltext.SetActive(true);
+                journeyovertext.SetActive(false);
+                RestartButton.SetActive(true);
+
             }
+
+
+
         }
 
         // Update is called once per frame

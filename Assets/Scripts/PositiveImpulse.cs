@@ -24,8 +24,8 @@ namespace Rudrac.BrockenSteel
         private void OnCollisionEnter(Collision collision)
         {
             collision.collider.GetComponent<EnemyStats>().DeathEffect();
+            AudioManager.instance.PlayblastSound();
         }
-
 
     }
 }
