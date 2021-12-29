@@ -155,19 +155,22 @@ namespace Rudrac.BrockenSteel
 
             if (colorType == ColorType.FireWall)
             {
-                Enemystats.DeathEffect();
+                if (Enemystats != null) Enemystats.DeathEffect();
                 return;
             }
 
             bool samecolor = false;
-            foreach (var item in Enemystats.colorTypes)
+            if (Enemystats != null)
             {
-                if (item == colorType)
+                foreach (var item in Enemystats.colorTypes)
                 {
-                    GameManager.instance.OnScoredEvent.Invoke();
-                    scoredEffect();
-                    Enemystats.ConsumeEffect();
-                    samecolor = true;
+                    if (item == colorType)
+                    {
+                        GameManager.instance.OnScoredEvent.Invoke();
+                        scoredEffect();
+                        Enemystats.ConsumeEffect();
+                        samecolor = true;
+                    }
                 }
             }
 
@@ -175,7 +178,7 @@ namespace Rudrac.BrockenSteel
             {
                 Camera.main.transform.DOShakeRotation(0.25f, 0.75f, 20);
                 TakeDamage(Enemystats.DamageAmount);
-                Enemystats.DeathEffect();
+                if(Enemystats!=null) Enemystats.DeathEffect();
                 GameManager.instance.OnmissedEvent.Invoke();
             }
 
